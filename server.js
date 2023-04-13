@@ -10,6 +10,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/user', (req, res, next) => {
+  res.show('forbidden.html');
+});
+
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/', (req, res) => res.show('index.html'));
@@ -22,5 +26,5 @@ app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, 'public/404.jpg'));
 });
 app.listen(8000, () => {
-  console.log('Sever is runnig on port 8000');
+  console.log('Sever is running on port 8000');
 });
